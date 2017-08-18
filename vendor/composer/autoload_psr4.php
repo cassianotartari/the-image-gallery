@@ -16,4 +16,6 @@ return array(
     'Silex\\' => array($vendorDir . '/silex/silex/src/Silex'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Imanee\\' => array($vendorDir . '/imanee/imanee/src'),
+    '' => array($baseDir . '/src'),
 );

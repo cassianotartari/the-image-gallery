@@ -30,6 +30,10 @@ class ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
         ),
+        'I' => 
+        array (
+            'Imanee\\' => 7,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -73,6 +77,14 @@ class ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Imanee\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/imanee/imanee/src',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -97,6 +109,7 @@ class ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb::$prefixesPsr0;
 
         }, null, ClassLoader::class);

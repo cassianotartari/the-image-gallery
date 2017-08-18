@@ -39,16 +39,16 @@ $app->post('/upload/', function(Request $request) use ($app) {
     return new RedirectResponse('/', 302);
 });
 
-$app->get('/img/{name}', function($name, Request $request) use ($app) {
-    $path = realpath($app['upload_folder'] . '/' . $name);
+$app->get('/img/{name}/{img}', function($name, $size, Request $request) use ($app) {
+    $thumbnailer = $app['thumbnailer'];
+    $pathToThumb = $thumbnailer->create($name, $size);
 
-    if (!$path || strpos($path, $app['upload_folder']) !== 0) {
-        throw new \Exception('File not found');
+    // abort if we haven't successfully created a thumbnail
+    if (empty($pathToThumb) || !file_exists($pathToThumb)) {
+        $app->abort(404, 'Image not found');
     }
+    return new BinaryFileResponse($pathToThumb);
 
-    return new BinaryFileResponse($path);
-});
-
-
+})->value('size', TheImageGallery\Thumbnailer::SMALL);
 
 $app->run();
