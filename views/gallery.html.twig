@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block sub_title 'Gallery - ' %}
+
+{% block body %}
+    <h2>Image Gallery</h2>
+    {% for item in images %}
+        <img src="{{ baseUrl }}/img/{{ item }}"><br>
+    {% else %}
+        <p><strong>Sorry, no images were found.</strong></p>
+    {% endfor %}
+    <br><br>
+    <a href="{{ baseUrl }}/upload/">Upload Photos &raquo;</a>
+{% endblock %}

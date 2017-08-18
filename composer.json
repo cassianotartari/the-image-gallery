@@ -1,7 +1,8 @@
 {
     "name": "cassianotartari/the-image-gallery",
     "require": {
-        "silex/silex": "~2"
+        "silex/silex": "~2",
+        "twig/twig": "^3.0@dev"
     },
     "license": "MIT",
     "authors": [

@@ -7,41 +7,21 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-// our upload form action
-$app->get( '/upload/', function() {
-    $upload_form = 
-<<<EOF
-    <html>
-    <body>
-    <form enctype="multipart/form-data" action="" method="POST">
-    <input type="hidden" name="MAX_FILE_SIZE" value="52428800" />
-    Choose a Photo:
-    <br><br>
-    <input name="image" type="file" />
-    <br><br>
-    <input type="submit" value="Upload Photo" />
-    </form>
-    </body>
-    </html>
-EOF;
-            
-    return $upload_form;
+$app->get('/upload/', function() use ($app) {
+    return $app['twig']->render('upload_form.html.twig');
 });
 
-
-// Declare our primary action
 $app->get('/', function() use ($app) {
-    $images = glob($app['upload_folder'] . '/img*');
-    $out = '<html><body>';
+    $imageGlob = glob($app['upload_folder'] . '/img*');
+    $images = array_map(
+        function($val) {
+            return basename($val);
+        }, $imageGlob
+    );
 
-    foreach($images as $img) {
-        $out .= '<img src="/img/' . basename($img) . '"><br><br>';
-    }
-
-    $out .= '<a href="/upload/">Upload Photos &raquo;</a>';
-    $out .= '</body></html>';
-
-    return $out;
+    return $app['twig']->render('gallery.html.twig', array(
+        'images' => $images,
+    ));
 });
 
 $app->post('/upload/', function(Request $request) use ($app) {

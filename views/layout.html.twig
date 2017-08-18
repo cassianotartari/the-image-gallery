@@ -1,0 +1,16 @@
+{# empty Twig template #}
+{% set baseUrl = app.request_stack.currentRequest.baseUrl %}
+<html>
+    <head>
+        <title>
+            {% block sub_title '' %}
+            {% block title 'The Image Gallery' %}
+        </title>
+    </head>
+    <body>
+        <h1>The Image Gallery</h1>
+        {% block body %}
+            Welcome to The Image Gallery!
+        {% endblock %}
+    </body>
+</html>
