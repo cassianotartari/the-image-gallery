@@ -1,0 +1,14 @@
+{
+    "name": "cassianotartari/the-image-gallery",
+    "require": {
+        "silex/silex": "~2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cassiano Tartari",
+            "email": "cassianotartari@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
