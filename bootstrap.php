@@ -2,7 +2,8 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-$app = new Silex\Application();
+$app        = new Silex\Application();
+$app['env'] = isset($app_env) ? $app_env : 'dev';
 
 $app['debug'] = true;
 $app['upload_folder'] = __DIR__ . '/uploads';
@@ -19,7 +20,7 @@ $app->register(new TheImageGallery\ThumbnailerServiceProvider(), array(
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
         'driver' => 'pdo_sqlite',
-        'path'   => __DIR__ . '/gallery.db',
+        'path'   => __DIR__ . ($app['env'] === 'test' ? '/gallery_test.db' : '/gallery.db'),
     ),
 ));
 

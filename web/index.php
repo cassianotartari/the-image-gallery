@@ -87,4 +87,8 @@ $app->get('/img/{id}_{size}.jpg', function($id, $size) use ($app) {
     );
 })->value('size', TheImageGallery\Thumbnailer::SMALL);
 
+if ($app['env'] === 'test') {
+    return $app;
+}
+
 $app->run();
