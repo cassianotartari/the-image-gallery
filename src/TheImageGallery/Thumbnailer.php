@@ -19,7 +19,7 @@ class Thumbnailer {
     }
 
     public function createFromId($id, $size) {
-        if (!file_exists($this->imageLocation . '/' . $name)) {
+        if (!file_exists($this->imageLocation . '/' . 'img_' . $id . '.jpg')) {
             throw new \Exception('File not found');
         }
 
@@ -30,19 +30,19 @@ class Thumbnailer {
         switch ($size) {
             default:
             case self::SMALL:
-                $thumb_name = $this->thumbLocation . '/sm_' . $name . '.jpg';
+                $thumb_name = $this->thumbLocation . '/sm_' . $id . '.jpg';
                 $thumb_width = 320;
                 $thumb_height = 240;
                 break;
 
             case self::MEDIUM:
-                $thumb_name = $this->thumbLocation . '/md_' . $name . '.jpg';
+                $thumb_name = $this->thumbLocation . '/md_' . $id . '.jpg';
                 $thumb_width = 1024;
                 $thumb_height = 768;
                 break;
         }
         if (!file_exists($thumb_name)) {
-            $img = new Imanee($this->imageLocation . '/' . $name);
+            $img = new Imanee($this->imageLocation . '/' . 'img_' . $id . '.jpg');
             $img->thumbnail($thumb_width, $thumb_height, true);
             file_put_contents($thumb_name, $img->output('jpg'));
         }

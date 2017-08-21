@@ -1,16 +1,92 @@
 {# empty Twig template #}
 {% set baseUrl = app.request_stack.currentRequest.baseUrl %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>
-            {% block sub_title '' %}
-            {% block title 'The Image Gallery' %}
-        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>{% block sub_title '' %}{% block title 'The Image Gallery' %}</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     </head>
     <body>
-        <h1>The Image Gallery</h1>
-        {% block body %}
-            Welcome to The Image Gallery!
-        {% endblock %}
+        <!-- begin navbar -->
+        <div class="navbar-fixed">
+            <nav class="cyan lighten-1 z-depth-0" role="navigation">
+                <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">The Image Gallery</a>
+                    <ul class="left hide-on-med-and-down">
+                        <li><a href="/">View <i class="material-icons right">view_module</i></a></li>
+                    </ul>
+                    <ul class="right">
+                        <li><a href="#modal1" class="modal-trigger"><span class="hide-on-med-and-down">Upload </span><i class="material-icons right">cloud_upload</i></a></li>
+                    </ul>
+
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="/">View Gallery <i class="material-icons right">view_module</i></a></li>
+                        <li><a href="/upload/">Upload a Photo <i class="material-icons right">cloud_upload</i></a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </div>
+        <!-- end navbar -->
+        <!-- begin main body -->
+        <div class="section no-pad-bot" id="index-banner">
+            {% block body %}
+                <div class="container">
+                    <h1 class="header center orange-text">The Image Gallery</h1>
+                    <p>Welcome to The Image Gallery!</p>
+                </div>
+            {% endblock body %}
+        </div>
+        <!-- end main body -->
+        
+        <footer class="page-footer grey darken-2">
+            <div class="footer-copyright">
+                <div class="container">
+                    Copyright &copy; {{ "now"|date('Y') }}
+                    <a class="amber-text text-lighten-3" href="/">The Image Gallery</a>
+                </div>
+            </div>
+        </footer>
+                    
+        <!-- begin modal upload form -->
+        <div id="modal1" class="modal modal-fixed-footer">
+            <form enctype="multipart/form-data" action="/upload/" method="POST">
+                <input type="hidden" name="MAX_FILE_SIZE" value="52428800" />
+                <div class="modal-content">
+                    <h4>Upload a Photo</h4>
+                    <p>Choose a file to upload. Supported formats: JPG, PNG</p>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span> <input type="file" name="image">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">
+                        Upload File <i class="material-icons right">cloud_upload</i>
+                    </button>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+        <!-- end modal upload form -->
+                    
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                $('.modal-trigger').leanModal();
+
+                $(".button-collapse").sideNav();
+            });
+        </script>
     </body>
 </html>

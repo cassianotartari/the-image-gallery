@@ -4,11 +4,31 @@
 
 {% block body %}
     <h2>Upload an Image</h2>
-    <form enctype="multipart/form-data" action="" method="POST">
-        <input type="hidden" name="MAX_FILE_SIZE" value="52428800" />
-        <br>
-        <input name="image" type="file" />
-        <br><br>
-        <input type="submit" value="Upload" />
-    </form>
+    <!-- begin modal upload form -->
+        <div id="modal1" class="modal modal-fixed-footer">
+            <form enctype="multipart/form-data" action="/upload/" method="POST">
+                <input type="hidden" name="MAX_FILE_SIZE" value="52428800" />
+                <div class="modal-content">
+                    <h4>Upload a Photo</h4>
+                    <p>Choose a file to upload. Supported formats: JPG, PNG</p>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span> <input type="file" name="image">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">
+                        Upload File <i class="material-icons right">cloud_upload</i>
+                    </button>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+        <!-- end modal upload form -->
 {% endblock body %}

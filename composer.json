@@ -1,10 +1,68 @@
 {
     "name": "cassianotartari/the-image-gallery",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "materialize/materialize",
+                "type": "component",
+                "version": "0.97.6",
+                "dist": {
+                    "url": "https://github.com/Dogfalo/materialize/archive/v0.97.6.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "component": {
+                        "scripts": [
+                            "dist/js/materialize.js"
+                        ],
+                        "files": [
+                            "dist/css/*",
+                            "dist/font/material-design-icons/*",
+                            "dist/font/roboto/*",
+                            "dist/fonts/roboto/*",
+                            "dist/js/*"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+          "type": "package",
+          "package": {
+            "name": "flickr/justified-layout",
+            "type": "component",
+            "version": "1.1.0",
+            "dist": {
+              "url": "https://github.com/flickr/justified-layout/archive/v1.1.0.zip",
+              "type": "zip"
+            },
+            "extra": {
+              "component": {
+                "scripts": [
+                  "dist/justified-layout.js"
+                ],
+                "files": [
+                  "dist/*"
+                ]
+              }
+            },
+            "require": {
+              "robloach/component-installer": "*"
+            }
+          }
+        }
+    ],
     "require": {
         "silex/silex": "~2",
         "twig/twig": "^3.0@dev",
         "imanee/imanee": "~1.0.0",
-        "doctrine/dbal": "~2.2"
+        "doctrine/dbal": "~2.2",
+        "materialize/materialize": "^0.97.6",
+        "flickr/justified-layout": "^1.1"
     },
     "license": "MIT",
     "authors": [
@@ -16,6 +74,10 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {"": "src/"}
-    }
+    },
+"config": {
+    "component-dir": "web/components",
+    "component-baseurl": "/components"
+}
 
 }
