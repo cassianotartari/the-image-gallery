@@ -3,7 +3,8 @@
     "require": {
         "silex/silex": "~2",
         "twig/twig": "^3.0@dev",
-        "imanee/imanee": "~1.0.0"
+        "imanee/imanee": "~1.0.0",
+        "doctrine/dbal": "~2.2"
     },
     "license": "MIT",
     "authors": [

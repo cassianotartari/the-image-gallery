@@ -18,7 +18,7 @@ class Thumbnailer {
         $this->thumbLocation = $thumbnailLocation;
     }
 
-    public function create($name, $size) {
+    public function createFromId($id, $size) {
         if (!file_exists($this->imageLocation . '/' . $name)) {
             throw new \Exception('File not found');
         }
