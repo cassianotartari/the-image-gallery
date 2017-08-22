@@ -50,4 +50,6 @@ foreach ($queries as $query) {
     $db->query($query);
 }
 
+$app->register(new SilexGuzzle\GuzzleServiceProvider(), []);
+
 return $app;

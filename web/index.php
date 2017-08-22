@@ -6,6 +6,52 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use GuzzleHttp\Client;
+use Api\GradeLevel;
+
+$app->get('/copy-courses', function() use ($app) {
+    
+    /* @var $client Client */
+    $client = $app['guzzle'];
+    
+    $coursesJson = $client
+            ->get('/courses')
+            ->getBody()
+            ->getContents();
+    
+    $courseList = json_decode($coursesJson);
+    
+    $coursesIds = $courseList['data'];
+    
+    $destinationCourses[];
+    
+    while(!empty($courseList['next'])) {
+    
+        foreach ($coursesIds as $courseId) {
+            $course = $client
+                ->get('/courses/'.$courseId)
+                ->getBody()
+                ->getContents();
+
+            $destinationCourse = [
+                'title' => $course['name'],
+                'grade' => GradeLevel::getGradeLevelNumber($course['grade']),
+                'srcid' => $course['id']
+            ];
+
+            array_push($destinationCourses, $destinationCourse);
+        }
+    }
+    
+    $client->post('/school/:school-id/courses', [
+        'body' => [
+            'courses' => json_encode($destinationCourses)
+        ]
+    ]);
+});
+
+
+
 
 $app->get('/upload/', function() use ($app) {
     return $app['twig']->render('upload_form.html.twig');

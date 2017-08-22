@@ -9,6 +9,9 @@ class ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -37,15 +40,23 @@ class ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Silex\\' => 6,
+            'SilexGuzzle\\' => 12,
         ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
         'I' => 
         array (
             'Imanee\\' => 7,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
         'D' => 
         array (
@@ -117,9 +128,17 @@ class ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb
         array (
             0 => __DIR__ . '/..' . '/silex/silex/src/Silex',
         ),
+        'SilexGuzzle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rebangm/silex-guzzlehttp-provider/src/SilexGuzzle',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Container\\' => 
         array (
@@ -128,6 +147,18 @@ class ComposerStaticInit0e5f28bdfaefd28dee1e74b08f471dfb
         'Imanee\\' => 
         array (
             0 => __DIR__ . '/..' . '/imanee/imanee/src',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

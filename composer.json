@@ -65,7 +65,8 @@
         "flickr/justified-layout": "^1.1",
         "phpunit/phpunit": "^4.0",
         "mikey179/vfsStream": "^1.6@dev",
-        "symfony/browser-kit": "3.4.x-dev"
+        "symfony/browser-kit": "3.4.x-dev",
+        "rebangm/silex-guzzlehttp-provider": "dev-master"
     },
     "license": "MIT",
     "authors": [
@@ -78,9 +79,9 @@
     "autoload": {
         "psr-4": {"": "src/"}
     },
-"config": {
-    "component-dir": "web/components",
-    "component-baseurl": "/components"
-}
+    "config": {
+        "component-dir": "web/components",
+        "component-baseurl": "/components"
+    }
 
 }
